@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <div>
+            <select name="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <select name="author">
+                {% for author in authors %}
+                    <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <select name="publisher">
+                {% for publisher in publishers %}
+                    <option value="{{ publisher.id }}">{{ publisher.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Опубликовать пост</button>
+    </form>
+</body>
+</html>
